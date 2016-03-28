@@ -39,7 +39,84 @@ import React, {Component} from 'react'
 function app() {
     // start app
     // new Router()
-    DOM.render(<p>test 2</p>, document.querySelector('.container'))
+    var AppView = React.createClass({
+    	render: function(){
+    		return(
+    			<div className="container">
+    				<TimeMachine/>
+    			</div>
+    		)
+    	}
+    })
+
+    var TimeMachine = React.createClass({
+    	
+    	getInitialState: function(){
+
+    		return{
+    			changeTime: false,
+    			year: 2016,
+    		}
+    	},
+
+    	_increaseYear: function(){
+    		if(!this.state.changeTime){
+    			var increaseFunc = function(){
+    				  this.setState({
+    					year: this.state.year + 1,
+    					changeTime:true,
+                        
+    				  })
+
+    			}
+    			var boundIncrease = increaseFunc.bind(this)
+    			this.intervalId = setInterval(boundIncrease,500)
+    		}else{
+    			clearInterval(this.intervalId) 
+    				this.setState({
+    					changeTime:false
+    				})
+    			}
+    	},
+
+    	_decreaseYear: function(){
+    		if(!this.state.changeTime){
+    			var decreaseFunc = function(){
+    				  this.setState({
+    					year: this.state.year - 1,
+    					changeTime:true,
+    				  })
+
+    			}
+    			var boundDecrease = decreaseFunc.bind(this)
+    			this.intervalId = setInterval(boundDecrease,500)
+    		}else{
+    			clearInterval(this.intervalId) 
+    				this.setState({
+    					changeTime:false
+    				})
+    			}
+    	},
+
+        // _background: function(year){
+        //     if(this.state.year > 1989 && this.state.year < 2000){
+        //         background:<p><a href="http://giphy.com/gifs/90s-fresh-prince-of-bel-air-dj-jazzy-jeff-xT9DPnNfbVkqAKq1os">via GIPHY</a></p>
+        //     }
+        // },
+
+    	render: function(){
+    		return(
+    			<div className="timer">
+    				<h3>{this.state.year}</h3>
+    				<button onClick={this._increaseYear}>Into The Future</button>
+    				<button onClick={this._decreaseYear}>Into The Past</button>
+    			</div>
+
+    		)
+    	}
+    })
+
+    DOM.render(<AppView/>, document.querySelector('.container'))
 }
 
 app()
