@@ -136,14 +136,14 @@ body{
     display: inline-block;
     position: absolute;
     top: 280px;
-    left: 370px;
+    left: 470px;
     height: 40%;
     width: 40%;
     text-align: center;
     background: #C02425; /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, #C02425 , #F0CB35); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #C02425 , #F0CB35); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    z-index: 2;
     h3{
         font-family: 'Orbitron', sans-serif;
         font-size:100px;
@@ -158,4 +158,10 @@ body{
         outline:none;
         margin:5%;
     }
+ }
+
+ .earth-img {
+    max-width: 70%;
+    position: absolute;
+    top: 20%;
  }
