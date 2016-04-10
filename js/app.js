@@ -86,7 +86,7 @@ function app() {
     				    <button onClick={this._decreaseYear}>Into The Past</button>
     			     </div>
                     <div>
-                        <img className="earth-img"src={"./images/earth.jpg"}/>
+                        <img className="earth-img"src={"images/earth.jpg"}/>
                     </div>
                 </div>
 
